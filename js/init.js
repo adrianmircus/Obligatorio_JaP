@@ -44,4 +44,32 @@ var getJSONData = function(url){
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
+
+  fetch(PRODUCTS_URL)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                appendData(data);
+            })
+            .catch(function (err) {
+                console.log('error: ' + err);
+            });
+        function appendData(data) {
+            var mainContainer = document.getElementById("productsData");
+            for (var i = 0; i < data.length; i++) {
+                var div = document.createElement("div");
+                
+                var imgSrc = data[i].imgSrc
+                div.innerHTML =  `<img src="${imgSrc}" class="hola"> <p class="productName"> ${data[i].name} </p> <p>  ${data[i].description} </p>  <p> Precio: ${data[i].cost} ${data[i].currency}  </p>`
+                mainContainer.appendChild(div);
+                div.classList.add("col-sm");
+                
+            }
+        }
+
+  
+
+
+
 });
