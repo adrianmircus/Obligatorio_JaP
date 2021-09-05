@@ -187,3 +187,25 @@ a.custom-card:hover {
   margin: 1em;
   border: 2px solid black;
 }
+
+#productsData {
+  margin: 1em 0 0 1em;
+}
+.container-fluid {
+  padding: 0 1em 0 0;
+}
+
+#minPricex, #maxPricex {
+  margin: 0.7em;
+}
+
+#filterandclear {
+  margin: 0.5em;
+}
+#price, .bttns {
+  padding: 1rem;
+}
+
+#loggedUser {
+  color: white;
+}

@@ -4,4 +4,18 @@
 
 document.addEventListener("DOMContentLoaded", function(e){
 
+	
+	
+
+
+});
+
+document.getElementById("loginBttn").addEventListener("click", function(){
+
+	let userEmail = document.getElementById("inputEmail").value;
+
+	localStorage.setItem("Email", String(userEmail));
+
+
+
 });
