@@ -6,6 +6,14 @@ let resultData = [];
 let productsDiv = document.getElementById("productsData");
 let minPrice;
 let maxPrice;
+let ID = [];
+
+function setID(id) {
+	console.log(id)
+	localStorage.setItem('display-id',id)
+
+	window.location.href = 'product-info.html';
+};
 
 
 function showProducts() {
@@ -15,7 +23,7 @@ function showProducts() {
 
 		for (let i = 0; i < resultArray.length; i++) {
 			let product = resultArray[i]
-
+			ID[i] = i;
 
 
 			//Arreglar para que use Array.filter()
@@ -24,6 +32,7 @@ function showProducts() {
 
 			content += `
                     <div class="col-md-3">
+                        
                         <div class="card mb-3 shadow-sm custom-card">
                             <img class="bd-placeholder-img card-img-top"  src="` + product.imgSrc + `">
                             <h3 class="m-3">` + product.name + `</h3>
@@ -31,11 +40,17 @@ function showProducts() {
                                 <p class="card-text"> ` + product.description + `</p>
                                 <p class="card-text"> ` + "Cantidad vendidos " + product.soldCount + `</p>
                                 <p class="card-text"> ` + product.currency + " " + product.cost + `</p>
+                                <button type="button" onclick=setID(`  + i +  `)>Ir</button>
                             </div>
                         </div>
+                        
                     </div> `
+                    
+                    console.log(ID[i])
+
 
                 }
+
 		}
 		
 
@@ -48,6 +63,9 @@ function sortPriceAsc() {
 	resultData.sort(function(a,b) {
 		return parseFloat(a.cost) - parseFloat(b.cost);
 	});
+	ID.sort(function(a,b) {
+		return parseFloat(a.cost) - parseFloat(b.cost);
+	});
 	showProducts();
 }
 
@@ -55,12 +73,18 @@ function sortPriceDesc() {
 	resultData.sort(function(a,b) {
 		return parseFloat(b.cost) - parseFloat(a.cost);
 	});
+	ID.sort(function(a,b) {
+		return parseFloat(a.cost) - parseFloat(b.cost);
+	});
 	showProducts();
 }
 
 function sortRelDesc() {
 	resultData.sort(function(a,b) {
 		return parseFloat(b.soldCount) - parseFloat(a.soldCount);
+	});
+	ID.sort(function(a,b) {
+		return parseFloat(a.cost) - parseFloat(b.cost);
 	});
 	showProducts();
 }
@@ -116,6 +140,7 @@ document.getElementById("clearBttn").addEventListener("click", function(){
 
 
 });
+
 
 });
 
