@@ -7,22 +7,33 @@ let productsDiv = document.getElementById("productsData");
 let minPrice;
 let maxPrice;
 let ID = [];
+let foo = false;
+
+
+// SE SORTEA EL ARRAY
 
 function setID(id) {
-	console.log(id)
-	localStorage.setItem('display-id',id)
+
+	console.log(id);
+
+	localStorage.setItem('display-id', id);
 
 	window.location.href = 'product-info.html';
+
 };
 
 
 function showProducts() {
+
 		let resultArray = resultData;
 		let content = "";
 
 
 		for (let i = 0; i < resultArray.length; i++) {
-			let product = resultArray[i]
+
+			let product = resultArray[i];
+
+
 			ID[i] = i;
 
 
@@ -56,16 +67,19 @@ function showProducts() {
 
 		productsDiv.innerHTML = content;
 
+		localStorage.setItem('array', JSON.stringify(resultArray))
+
 
 	}
 
 function sortPriceAsc() {
+
 	resultData.sort(function(a,b) {
 		return parseFloat(a.cost) - parseFloat(b.cost);
 	});
-	ID.sort(function(a,b) {
-		return parseFloat(a.cost) - parseFloat(b.cost);
-	});
+	
+	localStorage.setItem('order', 'priceasc')
+	
 	showProducts();
 }
 
@@ -73,9 +87,7 @@ function sortPriceDesc() {
 	resultData.sort(function(a,b) {
 		return parseFloat(b.cost) - parseFloat(a.cost);
 	});
-	ID.sort(function(a,b) {
-		return parseFloat(a.cost) - parseFloat(b.cost);
-	});
+	
 	showProducts();
 }
 
@@ -83,9 +95,7 @@ function sortRelDesc() {
 	resultData.sort(function(a,b) {
 		return parseFloat(b.soldCount) - parseFloat(a.soldCount);
 	});
-	ID.sort(function(a,b) {
-		return parseFloat(a.cost) - parseFloat(b.cost);
-	});
+	
 	showProducts();
 }
 

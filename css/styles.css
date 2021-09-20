@@ -209,3 +209,16 @@ a.custom-card:hover {
 #loggedUser {
   color: white;
 }
+
+textarea {
+  width: 30em;
+  height: 10em;
+  display: block;
+  margin: 0 0 1em 0;
+
+}
+
+#calificacion {
+  margin: 0 0 1em 0;
+  width: 5em;
+}
