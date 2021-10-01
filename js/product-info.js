@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function(e){
 
 	
 
-	let lol = document.getElementById('lol');
+	let producto = document.getElementById('data');
 	resultData = JSON.parse(localStorage.getItem('array'))
 
 showProducts();
@@ -28,7 +28,19 @@ console.log(resultData)
 
 
 
-function showProducts() {
+function showProducts(id) {
+
+const PRODUCT_SINGLE = 'https://adrianmircus.github.io/Obligatorio_JaP/json/'
+
+
+let url = PRODUCT_SINGLE + id + '.json';
+
+
+		getJSONData(url).then(function (resultProduct) {
+			console.log(resultProduct)
+		})
+
+
 
 		let resultArray = resultData;
 		let content = "";
@@ -105,6 +117,7 @@ function showProducts() {
                             <h3 class="m-3">` + comment.user + `</h3>
                             <div class="card-body">
                                 <p class="card-text"> ` + comment.description + `</p>
+                                <p class="card-text"> ` + comment.dateTime + `</p>
                                 <p>${points}</p>
                             </div>
                         </div>
